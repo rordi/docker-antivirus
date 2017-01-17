@@ -3,7 +3,7 @@ for file in "/data/queue"/* ; do
     echo "Processing ${file}"
     filename=`basename $file`
     mv $file "/data/scan/${filename}"
-    scanfile "/data/scan/${filename}"
+    scanfile
     if [ -e "/data/scan/${filename}" ]
     then
         mv "/data/scan/${filename}" "/data/ok/${filename}"
