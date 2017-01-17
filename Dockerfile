@@ -8,7 +8,7 @@ USER root
 RUN apt-get update
 RUN apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools tar wget
 
-# install Linux Malware Detection (MLD)
+# install Linux Malware Detection (LMD)
 COPY ./assets/install_maldet.sh /usr/local/install_maldet.sh
 RUN cd /usr/local/ && chmod +x ./install_maldet.sh && ./install_maldet.sh
 COPY ./assets/conf.maldet /usr/local/maldetect/conf.maldet
@@ -24,7 +24,7 @@ COPY ./assets/scanner.sh /usr/local/sbin/scanner
 RUN cd /usr/local/ && chmod +x ./install_antivirus.sh && ./install_antivirus.sh
 
 # remove tools we no longer need
-RUN apt-get -y remove wget curl apt-utils
+RUN apt-get -y remove curl apt-utils
 
 # export volumes
 VOLUME /data/queue
