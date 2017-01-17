@@ -11,6 +11,7 @@ mkdir -p /data/quarantine
 cd /usr/local
 crontab -l > tempcrons
 echo "05 * * * * freshclam --quiet" >> tempcrons
+echo "10 * * * * maldet --update --quiet" >> tempcrons
 crontab tempcrons
 rm tempcrons
 
