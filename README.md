@@ -16,10 +16,10 @@ Optionally, an email alert can be sent to a specified email address whenever a v
 
 ### Volume mounts
 
-/data/queue         push files to be checked here
-/data/ok            fetch checked files from here
-/data/nok           provides scan reports for quanrantined files
-/data/quarantine    quarantine files can be accessed here (e.g. to delete)
+        /data/queue         --> push files to be checked here
+        /data/ok            --> fetch checked files from here
+        /data/nok           --> provides scan reports for quanrantined files
+        /data/quarantine    --> quarantine files can be accessed here (e.g. to delete)
 
 ### Docker Pull & Run
 
