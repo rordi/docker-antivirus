@@ -1,13 +1,16 @@
-#!/bin/sh
-if [ $# -ne 2 ]
-then
-    echo "Usage: `basename $0`   alerts [0/1]   email [email address]"
-    exit 1
+#!/bin/bash
+echo "Updating antivirus configuration..."
+sed -i -e "s/{ALERT}/0/g" /usr/local/maldetect/conf.maldet
+sed -i -e "s/{EMAIL}//g" /usr/local/maldetect/conf.maldet
+if [[ $# -eq 1 && $1 = *[!\ ]* ]] ; then
+    email=$1
+    sed -i -e "s/{ALERT}/1/g" /usr/local/maldetect/conf.maldet
+    sed -i -e "s/{EMAIL}/${email}/g" /usr/local/maldetect/conf.maldet
+    echo " -> enbaled email alerts for ${email}"
+else
+    sed -i -e "s/{ALERT}/0/g" /usr/local/maldetect/conf.maldet
+    sed -i -e "s/{EMAIL}//g" /usr/local/maldetect/conf.maldet
 fi
-
-alert=$1
-email=$2
-sed -i -e "s/{ALERT}/${alert}/g" /usr/local/maldetect/conf.maldet
-sed -i -e "s/{EMAIL}/${email}/g" /usr/local/maldetect/conf.maldet
+echo "Done"
 
 /bin/bash -l
