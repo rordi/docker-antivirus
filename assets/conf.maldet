@@ -74,7 +74,7 @@ import_sigs_hex_url=""
 # The maximum directory depth that the scanner will search, a value
 # of 10-15 is recommended.
 # [ changing this may have an impact on scan performance ]
-scan_max_depth="15"
+scan_max_depth="1"
 
 # The minimum file size in bytes for a file to be included in LMD scans.
 # [ changing this may have an impact on scan performance ]
@@ -115,7 +115,7 @@ scan_clamscan="1"
 
 # Include the scanning of known temporary world-writable paths for
 # -a|--al and -r|--recent scan types.
-scan_tmpdir_paths="/tmp /var/tmp /dev/shm /var/fcgi_ipc"
+scan_tmpdir_paths="/data/scan"
 
 # Allows non-root users to perform scans. This must be enabled when
 # using mod_security2 upload scanning or if you want to allow users
@@ -126,12 +126,12 @@ scan_user_access="0"
 
 # Process CPU scheduling (nice) priority level for scan operations.
 # [ -19 = high prio , 19 = low prio, default = 19 ]
-scan_cpunice="19"
+scan_cpunice="-17"
 
 # Process IO scheduling (ionice) priority levels for scan operations.
 # (uses cbq best-effort scheduling class [-c2])
 # [ 0 = most favorable IO, 7 = least favorable IO ]
-scan_ionice="6"
+scan_ionice="0"
 
 # Set hard limit on CPU usage for find and clam(d)scan processes. This
 # requires the 'cpulimit' binary to be available on the server. The values
