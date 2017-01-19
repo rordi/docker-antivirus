@@ -13,12 +13,12 @@
 # alerts as well as automated/manual scan reports. On-demand reports
 # can still be sent using '--report SCANID user@domain.com'.
 # [0 = disabled, 1 = enabled]
-email_alert="{ALERT}"
+email_alert="0"
 
 # The destination e-mail addresses for automated/manual scan reports
 # and application version alerts.
 # [ multiple addresses comma (,) spaced ]
-email_addr="{EMAIL}"
+email_addr=""
 
 # Ignore e-mail alerts for scan reports in which all malware hits
 # have been automatically and successfully cleaned.

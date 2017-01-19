@@ -19,18 +19,20 @@ RUN chmod +x /usr/local/entrypoint.sh
 
 # configure antivirus solution
 COPY ./assets/install_antivirus.sh /usr/local/install_antivirus.sh
+COPY ./assets/install_alerts.sh /usr/local/install_alerts.sh
 COPY ./assets/scanfile.sh /usr/local/sbin/scanfile
 COPY ./assets/scanner.sh /usr/local/sbin/scanner
+RUN cd /usr/local/ && chmod +x ./install_alerts.sh
 RUN cd /usr/local/ && chmod +x ./install_antivirus.sh && ./install_antivirus.sh
 
 # remove tools we no longer need
 RUN apt-get -y remove curl apt-utils
 RUN rm -rf /var/cache/*
 
-# export volumes
-VOLUME /data/queue
-VOLUME /data/ok
-VOLUME /data/nok
+# export volumes (uncomment if you do not mount these volumes at runtime)
+# VOLUME /data/queue
+# VOLUME /data/ok
+# VOLUME /data/nok
 
 # CMD will be substituted by docker run args, e.g. docker run -ti --name antivirus antivirus my@email.com
 ENTRYPOINT ["/usr/local/entrypoint.sh"]
