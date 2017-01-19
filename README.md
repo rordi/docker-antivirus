@@ -12,11 +12,11 @@
 
 ### Introduction
 
-Build for [dro0/docker-antivirus](https://hub.docker.com/r/dro0/docker-antivirus/) Docker image running [Linux Malware Detect (LMD)](https://github.com/rfxn/linux-malware-detect) with [ClamAV](https://github.com/vrtadmin/clamav-devel) as the scanner.
+Build for [rordi/docker-antivirus](https://hub.docker.com/r/rordi/docker-antivirus/) Docker image running [Linux Malware Detect (LMD)](https://github.com/rfxn/linux-malware-detect) with [ClamAV](https://github.com/vrtadmin/clamav-devel) as the scanner.
 
-dro0/docker-antivirus provides a plug-in container to e.g. scan file uploads in web applications before further processing.
+rordi/docker-antivirus provides a plug-in container to e.g. scan file uploads in web applications before further processing.
 
-The container requires three volume mounts from where to take files to scan, and to deliver back scanned files and scan reports. 
+The container requires three volume mounts from where to take files to scan, and to deliver back scanned files and scan reports.
 
 The container auto-updates the LMD and ClamAV virus signatures once per hour.
 
@@ -30,8 +30,8 @@ Please provide the following volume mounts at runtime (e.g. in your docker-compo
         /data/queue         --> files to be checked
         /data/ok            --> checked files (ok)
         /data/nok           --> scan reports for infected files
-        
-Additionally, you may mount the quarantine folder and provide it to the antivirus container at the following path (this might be useful if you want to process the quarantined files from another container): 
+
+Additionally, you may mount the quarantine folder and provide it to the antivirus container at the following path (this might be useful if you want to process the quarantined files from another container):
 
         /data/quarantine    --> quarantined files
 
@@ -42,11 +42,11 @@ Additionally, you may mount the quarantine folder and provide it to the antiviru
 To install the container, pull it from the Docker registry (latest tag refers to
 the master branch, use dev tag for dev branch):
 
-    docker pull dro0/docker-antivirus:latest
+    docker pull rordi/docker-antivirus:latest
 
 To run the docker container, use the following command. If you pass an email address as the last argument, email alerts will be activated and sent to this email address whenever a virus is detected.
 
-    docker run -tid --name docker-antivirus dro0/docker-antivirus [email@example.net]
+    docker run -tid --name docker-antivirus rordi/docker-antivirus [email@example.net]
 
 
 
@@ -68,7 +68,7 @@ Here is an exmple entry that you can use in your docker-compose file to easily p
 
 
     docker-av:
-      image: dro0/docker-antivirus
+      image: rordi/docker-antivirus
       container_name: docker-av
       # uncomment and set the email address to receive email alerts when viruses are detected
       #command:
