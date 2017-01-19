@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:jessie-slim
 
 MAINTAINER Dietrich Rordorf <dr@ediqo.com>
 
@@ -25,6 +25,7 @@ RUN cd /usr/local/ && chmod +x ./install_antivirus.sh && ./install_antivirus.sh
 
 # remove tools we no longer need
 RUN apt-get -y remove curl apt-utils
+RUN rm -rf /var/cache/*
 
 # export volumes
 VOLUME /data/queue
