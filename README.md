@@ -67,9 +67,9 @@ To start the built image, run the following command. Optionally pass an email ad
 Here is an exmple entry that you can use in your docker-compose file to easily plug in the container into your existing network. Replace "networkid" with your actual netwerk id. Optionally turn on email alerts by uncommenting the "command". Finally, make sure the ./data/... folders exist on your local/host system or change the paths.
 
 
-    docker-antivirus:
+    docker-av:
       image: dro0/docker-antivirus
-      container_name: gefop-av
+      container_name: docker-av
       # uncomment and set the email address to receive email alerts when viruses are detected
       #command:
       # - /usr/local/install_alerts.sh email@example.net
