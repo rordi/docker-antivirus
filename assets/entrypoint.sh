@@ -13,4 +13,5 @@ else
 fi
 echo "Done"
 
-/bin/bash -l
+# keep the docker container running
+tail -f /dev/null
