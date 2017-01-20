@@ -2,7 +2,7 @@
 files=$(shopt -s nullglob dotglob; echo /data/queue/*)
 if (( ${#files} ))
 then
-    printf "\nFound files to process"
+    printf "\nFound files to process\n"
     for file in "/data/queue"/* ; do
         filename=`basename $file`
         mv -f $file "/data/scan/${filename}"
