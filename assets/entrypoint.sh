@@ -13,10 +13,7 @@ for i in ${PATHS[@]}; do
     mkdir -p ${i}
 done
 
-# keep the docker container running
-tail -f /dev/null
-
-# inotify watches the queue and launches the AV scanner when new files are written
+# inotify watches the queue and launches the AV scanner when new files are written, keeps the docker container running as well!
 #
 #  -m /data/queue                monitor /data/queue forever
 #  -r                            watched directory recursively
