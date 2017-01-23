@@ -17,11 +17,10 @@ then
         elif [ -e "/data/quarantine/${filename}" ]
         then
             printf "\n  --> File quarantined / nok"
-            hash=`md5sum "/data/quarantine/${filename}" | awk '{ print $1 }'`
-            mv -f "/data/quarantine/${filename}" "/data/quarantine/${hash}"
-            printf "\n  --> File moved to /data/quarantine/${hash}"
-            mv -f "/data/scan/info" "/data/nok/${hash}"
-            printf "\n  --> Scan report moved to /data/nok/${hash}"
+            mv -f "/data/quarantine/${filename}" "/data/quarantine/${filename}"
+            printf "\n  --> File moved to /data/quarantine/${filename}"
+            mv -f "/data/scan/info" "/data/nok/${filename}"
+            printf "\n  --> Scan report moved to /data/nok/${filename}"
         fi
     done
     printf "\nDone with processing\n"

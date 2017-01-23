@@ -29,7 +29,7 @@ RUN cd /usr/local/ && chmod +x ./install_antivirus.sh && ./install_antivirus.sh
 RUN apt-get -y remove curl apt-utils
 RUN rm -rf /var/cache/*
 
-# export volumes (uncomment if you do not mount these volumes at runtime)
+# export volumes (uncomment if you do not mount these volumes at runtime or via docker-compose)
 # VOLUME /data/queue
 # VOLUME /data/ok
 # VOLUME /data/nok

@@ -1,5 +1,5 @@
 #!/bin/bash
-printf "\nUpdating antivirus configuration..."
+printf "\nUpdating antivirus configuration ..."
 sed -i -e "s/{ALERT}/0/g" /usr/local/maldetect/conf.maldet
 sed -i -e "s/{EMAIL}//g" /usr/local/maldetect/conf.maldet
 if [[ $# -eq 1 && $1 = *[!\ ]* ]] ; then
@@ -22,7 +22,7 @@ done
 #  -e moved_to,close_write       only fire if a file is moved to or written into the watched directory
 #
 printf "\nWaiting for changes to /data/queue ..."
-inotifywait -m /data/queue -r -q -t 0 -e moved_to,close_write |
+inotifywait -m -r -q -t 0 -e moved_to,close_write /data/queue |
 while read -r path action file; do
      scanner
 done
