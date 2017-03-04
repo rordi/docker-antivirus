@@ -5,7 +5,7 @@
 
  - first stable release 19.01.2017
  - the image is maintained by Dietrich Rordorf, [Ediqo](https://www.ediqo.com/)
- - the image was prepared for [IWF](http://www.iwf.ch/web-solutions/)
+ - initially the Dockerfile was prepared for [IWF](http://www.iwf.ch/web-solutions/)
  - you can contribute to this project at https://github.com/rordi/docker-antivirus
 
 
