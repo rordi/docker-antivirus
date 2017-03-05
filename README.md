@@ -9,6 +9,12 @@
  - you can contribute to this project at https://github.com/rordi/docker-antivirus
 
 
+### Quick start
+
+If you simply want to try out the setup, copy the docker-compose.yml file from the [repository](https://github.com/rordi/docker-antivirus) to your local file system and run:
+
+    docker-compose up -d
+
 
 ### Introduction
 
@@ -27,13 +33,13 @@ Optionally, an email alert can be sent to a specified email address whenever a v
 
 Please provide the following volume mounts at runtime (e.g. in your docker-compose file). The antivirus container expects the following paths to be present when running:
 
-        /data/queue         --> files to be checked
-        /data/ok            --> checked files (ok)
-        /data/nok           --> scan reports for infected files
+        /data/av/queue         --> files to be checked
+        /data/av/ok            --> checked files (ok)
+        /data/av/nok           --> scan reports for infected files
 
 Additionally, you may mount the quarantine folder and provide it to the antivirus container at the following path (this might be useful if you want to process the quarantined files from another container):
 
-        /data/quarantine    --> quarantined files
+        /data/av/quarantine    --> quarantined files
 
 
 
@@ -49,10 +55,9 @@ To run the docker container, use the following command. If you pass an email add
     docker run -tid --name docker-antivirus rordi/docker-antivirus [email@example.net]
 
 
-
 ### Docker Build & Run
 
-To build your own image, clone the repo and cd into the clonde repository root folder. Then, build as follows:
+To build your own image, clone the repo and cd into the cloned repository root folder. Then, build as follows:
 
     docker build -t docker-antivirus .
 
@@ -61,10 +66,14 @@ To start the built image, run the following command. Optionally pass an email ad
     docker run -tid --name docker-antivirus docker-antivirus:latest [email@example.net]
 
 
+### Testing
+
+You can use the [EICAR test file](https://en.wikipedia.org/wiki/EICAR_test_file) to test the AV setup.
+
 
 ### Mounting volumes with docker-compose
 
-Here is an exmple entry that you can use in your docker-compose file to easily plug in the container into your existing network. Replace "networkid" with your actual netwerk id. Optionally turn on email alerts by uncommenting the "command". Finally, make sure the ./data/... folders exist on your local/host system or change the paths.
+Here is an exmple entry that you can use in your docker-compose file to easily plug in the container into your existing network. Replace "networkid" with your actual netwerk id. Optionally turn on email alerts by uncommenting the "command". Finally, make sure the ./data/av/... folders exist on your local/host system or change the paths.
 
 
     docker-av:
@@ -74,8 +83,8 @@ Here is an exmple entry that you can use in your docker-compose file to easily p
       #command:
       # - /usr/local/install_alerts.sh email@example.net
       volumes:
-        - ./data/queue:/data/queue
-        - ./data/ok:/data/ok
-        - ./data/nok:/data/nok
+        - ./data/queue:/data/av/queue
+        - ./data/ok:/data/av/ok
+        - ./data/nok:/data/av/nok
       networks:
         - yournetworkid

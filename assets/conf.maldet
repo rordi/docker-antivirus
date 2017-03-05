@@ -115,7 +115,7 @@ scan_clamscan="1"
 
 # Include the scanning of known temporary world-writable paths for
 # -a|--al and -r|--recent scan types.
-scan_tmpdir_paths="/data/scan"
+scan_tmpdir_paths="/data/av/scan"
 
 # Allows non-root users to perform scans. This must be enabled when
 # using mod_security2 upload scanning or if you want to allow users

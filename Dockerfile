@@ -25,9 +25,9 @@ RUN apt-get update && \
     maldet -u -d
 
 # export volumes (uncomment if you do not mount these volumes at runtime or via docker-compose)
-# VOLUME /data/queue
-# VOLUME /data/ok
-# VOLUME /data/nok
+# VOLUME /data/av/queue
+# VOLUME /data/av/ok
+# VOLUME /data/av/nok
 
 # CMD will be substituted by docker run args, e.g. docker run -ti --name antivirus antivirus my@email.com
 ENTRYPOINT ["/usr/local/entrypoint.sh"]
