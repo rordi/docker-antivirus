@@ -4,30 +4,25 @@ MAINTAINER Dietrich Rordorf <dr@ediqo.com>
 
 USER root
 
-# install antivirus and other tools we need
-RUN apt-get update
-RUN apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools tar wget
-
-# install Linux Malware Detection (LMD)
 COPY ./assets/install_maldet.sh /usr/local/install_maldet.sh
-RUN cd /usr/local/ && chmod +x ./install_maldet.sh && ./install_maldet.sh
 COPY ./assets/conf.maldet /usr/local/maldetect/conf.maldet
-
-# copy entrypoint script
 COPY ./assets/entrypoint.sh /usr/local/entrypoint.sh
-RUN chmod +x /usr/local/entrypoint.sh
-
-# configure antivirus solution
 COPY ./assets/install_antivirus.sh /usr/local/install_antivirus.sh
 COPY ./assets/install_alerts.sh /usr/local/install_alerts.sh
 COPY ./assets/scanfile.sh /usr/local/sbin/scanfile
 COPY ./assets/scanner.sh /usr/local/sbin/scanner
-RUN cd /usr/local/ && chmod +x ./install_alerts.sh
-RUN cd /usr/local/ && chmod +x ./install_antivirus.sh && ./install_antivirus.sh
 
-# remove tools we no longer need
-RUN apt-get -y remove curl apt-utils
-RUN rm -rf /var/cache/*
+# install antivirus and other tools we need
+RUN apt-get update && \
+    apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools tar wget && \
+    cd /usr/local/ && chmod +x ./install_maldet.sh && ./install_maldet.sh && \
+    chmod +x /usr/local/entrypoint.sh && \
+    cd /usr/local/ && chmod +x ./install_alerts.sh && \
+    cd /usr/local/ && chmod +x ./install_antivirus.sh && ./install_antivirus.sh && \
+    apt-get -y remove curl apt-utils && \
+    rm -rf /var/cache/* && \
+    freshclam && \
+    maldet -u -d
 
 # export volumes (uncomment if you do not mount these volumes at runtime or via docker-compose)
 # VOLUME /data/queue

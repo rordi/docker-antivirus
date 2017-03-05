@@ -1,12 +1,12 @@
 #!/bin/bash
 now=`date +'%Y-%m-%d %T'`
-printf "\n[${now}]\n"
+echo -n "[${now}]"
 
 # scan with ClamAV first (faster)
 clamscan -rio --enable-stats --move /data/quarantine /data/scan
 
 # scan with maldet second, if file still in /data/scan
-files=$(shopt -s nullglob dotglob; echo /usr/local/maldetect/quarantine/*)
+files=$(shopt -s nullglob dotglob; echo /data/scan/*)
 if (( ${#files} ))
 then
     maldet -a /data/scan/
@@ -18,7 +18,7 @@ if (( ${#files} ))
 then
     for file in "/usr/local/maldetect/quarantine"/* ; do
         filename=`basename $file`
-        printf "\n  --> Moving maldet quarantined file to /data/quarantine/${filename}"
+        echo -n "  --> Moving maldet quarantined file to /data/quarantine/${filename}"
         mv -f $file "/data/quarantine/${filename}"
     done
 fi

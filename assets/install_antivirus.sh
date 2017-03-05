@@ -10,8 +10,8 @@ mkdir -p /data/quarantine
 # setup cron to update virus signatures hourly
 cd /usr/local
 crontab -l > tempcrons
-echo "05 * * * * freshclam --quiet" >> tempcrons
-echo "10 * * * * maldet --update --quiet" >> tempcrons
+echo "05 * * * * freshclam" >> tempcrons
+echo "10 * * * * maldet -u -d" >> tempcrons
 crontab tempcrons
 rm tempcrons
 
