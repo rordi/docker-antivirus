@@ -1,5 +1,6 @@
 # docker-antivirus
 
+[![](https://images.microbadger.com/badges/image/rordi/docker-antivirus.svg)](https://microbadger.com/images/rordi/docker-antivirus "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/rordi/docker-antivirus.svg)](https://microbadger.com/images/rordi/docker-antivirus "Get your own version badge on microbadger.com")
 
 #### Notes
 
