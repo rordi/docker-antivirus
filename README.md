@@ -2,13 +2,20 @@
 
 [![](https://images.microbadger.com/badges/image/rordi/docker-antivirus.svg)](https://microbadger.com/images/rordi/docker-antivirus "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/rordi/docker-antivirus.svg)](https://microbadger.com/images/rordi/docker-antivirus "Get your own version badge on microbadger.com")
 
-#### Notes
+### Notes
+- the image is maintained by Dietrich Rordorf, [Ediqo](https://www.ediqo.com/)
+- initially the Dockerfile was prepared for [IWF](http://www.iwf.ch/web-solutions/)
+- you can contribute to this project at https://github.com/rordi/docker-antivirus
 
- - first stable release 19.01.2017
- - the image is maintained by Dietrich Rordorf, [Ediqo](https://www.ediqo.com/)
- - initially the Dockerfile was prepared for [IWF](http://www.iwf.ch/web-solutions/)
- - you can contribute to this project at https://github.com/rordi/docker-antivirus
+#### Version 2
+- released 06.11.2017
+- use supervisord as main command, spawning inotify and cron as subprocesses
+- refactor assets folder structure to reduce number of layers in resulting Docker image
+- remove signatures update from build script for faster build times
 
+#### Version 1
+ - released 19.01.2017
+ - first stable build
 
 ### Quick start
 
