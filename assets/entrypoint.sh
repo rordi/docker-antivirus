@@ -13,12 +13,12 @@ for i in ${PATHS[@]}; do
     mkdir -p ${i}
 done
 
-# printf "Fetching latest ClamAV virus definitions ...\n"
-# freshclam
+printf "Fetching latest ClamAV virus definitions ...\n"
+freshclam
 
-# printf "Fetching latest Maldet malware signatures ...\n"
-# maldet -u -d
+printf "Fetching latest Maldet malware signatures ...\n"
+maldet -u -d
 
 # start supervisors, which spawns cron and inotify launcher
-# printf "Starting supervisord ...\n"
+printf "Starting supervisord ...\n"
 /usr/bin/supervisord -c /usr/local/supervisor.conf

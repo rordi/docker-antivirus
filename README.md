@@ -11,7 +11,6 @@
 - released 06.11.2017
 - use supervisord as main command, spawning inotify and cron as subprocesses
 - refactor assets folder structure to reduce number of layers in resulting Docker image
-- remove signatures update from build script for faster build times
 
 #### Version 1
  - released 19.01.2017
