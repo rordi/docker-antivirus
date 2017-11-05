@@ -10,6 +10,7 @@ COPY ./assets /usr/local
 RUN apt-get update && \
     apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools supervisor host tar wget chkconfig && \
     mkdir -p /var/log/supervisor && \
+    mkdir -p /var/log/cron && \
     cd /usr/local/ && chmod +x *.sh && sync && \
     cd /usr/local/bin && chmod +x *.sh && sync && \
     /usr/local/install_maldet.sh && \

@@ -8,7 +8,7 @@ if [[ $# -eq 1 && $1 = *[!\ ]* ]] ; then
 fi
 printf "Done\n"
 
-PATHS=(/data/av/scan /data/av/quarantine /data/av/queue /data/av/ok /data/av/nok)
+PATHS=(/data/av/scan /data/av/quarantine /data/av/queue /data/av/ok /data/av/nok /var/log/cron)
 for i in ${PATHS[@]}; do
     mkdir -p ${i}
 done
