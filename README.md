@@ -2,7 +2,9 @@
 
 [![](https://images.microbadger.com/badges/image/rordi/docker-antivirus.svg)](https://microbadger.com/images/rordi/docker-antivirus "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/rordi/docker-antivirus.svg)](https://microbadger.com/images/rordi/docker-antivirus "Get your own version badge on microbadger.com")
 
+
 ### Notes
+- **The image can only be built once per hour on the same IP address due to download limitations of the ClamAV signatures!**
 - the image is maintained by Dietrich Rordorf, [Ediqo](https://www.ediqo.com/)
 - initially the Dockerfile was prepared for [IWF](http://www.iwf.ch/web-solutions/)
 - you can contribute to this project at https://github.com/rordi/docker-antivirus
