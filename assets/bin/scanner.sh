@@ -7,7 +7,7 @@ then
         filename=`basename $file`
         mv -f $file "/data/av/scan/${filename}"
         printf "Processing /data/av/scan/${filename}\n"
-        scanfile > /data/av/scan/info 2>&1
+        /usr/local/bin/scanfile.sh > /data/av/scan/info 2>&1
         if [ -e "/data/av/scan/${filename}" ]
         then
             printf "  --> File ok\n"
