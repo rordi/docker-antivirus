@@ -14,7 +14,3 @@ echo "05 * * * * freshclam" >> tempcrons
 echo "10 * * * * maldet -u -d" >> tempcrons
 crontab tempcrons
 rm tempcrons
-
-# make scanfile and scanner executable
-chmod +x /usr/local/sbin/scanfile
-chmod +x /usr/local/sbin/scanner

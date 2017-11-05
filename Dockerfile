@@ -1,24 +1,18 @@
 FROM debian:jessie-slim
-
 MAINTAINER Dietrich Rordorf <dr@ediqo.com>
 
 USER root
 
-COPY ./assets/install_maldet.sh /usr/local/install_maldet.sh
-COPY ./assets/conf.maldet /usr/local/maldetect/conf.maldet
-COPY ./assets/entrypoint.sh /usr/local/entrypoint.sh
-COPY ./assets/install_antivirus.sh /usr/local/install_antivirus.sh
-COPY ./assets/install_alerts.sh /usr/local/install_alerts.sh
-COPY ./assets/scanfile.sh /usr/local/sbin/scanfile
-COPY ./assets/scanner.sh /usr/local/sbin/scanner
+# copy assets to image
+COPY ./assets /usr/local
 
-# install antivirus and other tools we need
+# install antivirus and dependencies, get the latest clamav and maldet signatures
 RUN apt-get update && \
-    apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools tar wget && \
+    apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools tar wget chkconfig && \
     cd /usr/local/ && chmod +x ./install_maldet.sh && ./install_maldet.sh && \
     chmod +x /usr/local/entrypoint.sh && \
-    cd /usr/local/ && chmod +x ./install_alerts.sh && \
-    cd /usr/local/ && chmod +x ./install_antivirus.sh && ./install_antivirus.sh && \
+    cd /usr/local/ && chmod +x *.sh && ./install_antivirus.sh && \
+    cd /usr/local/bin && chmod +x *.sh && \
     apt-get -y remove curl apt-utils && \
     rm -rf /var/cache/* && \
     freshclam && \

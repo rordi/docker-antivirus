@@ -1,10 +1,13 @@
 #!/bin/sh
 mkdir -p /tmp/maldetect-current
-cd /tmp && curl -S -L -O http://www.rfxn.com/downloads/maldetect-current.tar.gz
+cd /tmp
+curl -S -L -O http://www.rfxn.com/downloads/maldetect-current.tar.gz && \
+# tar contains a folder like maldetect-1.6.2
 tar -xzvf /tmp/maldetect-current.tar.gz -C /tmp/maldetect-current
-yes | rm /tmp/maldetect-current.tar.gz
+cd ./maldetect-current
+maldetversion=$(ls -d */ | grep maldetect)
 # run install with bash to support advanced operators
-cd /tmp/maldetect-current/maldetect-1.5 && bash ./install.sh
+cd $maldetversion && bash ./install.sh
 ln -s /usr/local/maldetect/maldet /bin/maldet
 hash -r
 yes | rm -R /tmp/maldetect-current
