@@ -77,7 +77,7 @@ To start the built image, run the following command. Optionally pass an email ad
 
 ### Testing
 
-You can use the [EICAR test file](https://en.wikipedia.org/wiki/EICAR_test_file) to test the AV setup.
+You can use the [EICAR test file](https://en.wikipedia.org/wiki/EICAR_test_file) to test the AV setup. (Caution: create the file yourself and copy-past the file content that can be found on the linked Wikipedia article.)
 
 
 ### Mounting volumes with docker-compose
