@@ -10,11 +10,9 @@ COPY ./assets /usr/local
 RUN apt-get update && \
     apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools tar wget chkconfig && \
     cd /usr/local/ && chmod +x *.sh && sync && ./install_maldet.sh && ./install_antivirus.sh && \
-    cd /usr/local/bin && chmod +x *.sh && \
+    cd /usr/local/bin && chmod +x *.sh && sync && \
     apt-get -y remove curl apt-utils && \
-    rm -rf /var/cache/* && \
-    freshclam && \
-    maldet -u -d
+    rm -rf /var/cache/*
 
 # export volumes (uncomment if you do not mount these volumes at runtime or via docker-compose)
 # VOLUME /data/av/queue
