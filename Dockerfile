@@ -9,9 +9,7 @@ COPY ./assets /usr/local
 # install antivirus and dependencies, get the latest clamav and maldet signatures
 RUN apt-get update && \
     apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools tar wget chkconfig && \
-    cd /usr/local/ && chmod +x ./install_maldet.sh && ./install_maldet.sh && \
-    chmod +x /usr/local/entrypoint.sh && \
-    cd /usr/local/ && chmod +x *.sh && ./install_antivirus.sh && \
+    cd /usr/local/ && chmod +x *.sh && sync && ./install_maldet.sh && ./install_antivirus.sh && \
     cd /usr/local/bin && chmod +x *.sh && \
     apt-get -y remove curl apt-utils && \
     rm -rf /var/cache/* && \
