@@ -2,7 +2,9 @@
 
 [![](https://images.microbadger.com/badges/image/rordi/docker-antivirus.svg)](https://microbadger.com/images/rordi/docker-antivirus "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/rordi/docker-antivirus.svg)](https://microbadger.com/images/rordi/docker-antivirus "Get your own version badge on microbadger.com")
 
-rordi/docker-antivirus is a virus and malware scanner as a Docker microservice. It runs inotify as the main process that watches a pre-defined volume for file write events and calls clamscan for each new file that is written into the volume. We do *not* use the ClamAV daemon, which has a constant, large memory consumption. 
+rordi/docker-antivirus is a virus and malware scanner as a Docker microservice. You can read an introduction here: https://www.linkedin.com/pulse/virus-malware-scanning-service-docker-dietrich-rordorf
+
+The resulting Docker image runs inotify as the main process that watches a pre-defined volume for file write events and calls clamscan for each new file that is written into the volume. We do *not* use the ClamAV daemon, which has a constant, large memory consumption. 
 
 ### Notes
 - **The image may only be built once per hour on the same IP address due to download limitations of the ClamAV signatures**
