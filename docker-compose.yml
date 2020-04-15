@@ -12,6 +12,7 @@ services:
       - ./data/queue:/data/av/queue
       - ./data/ok:/data/av/ok
       - ./data/nok:/data/av/nok
+    #  - ./data/quarantine:/data/av/quarantine
     networks:
       - avnetwork
 
