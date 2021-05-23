@@ -4,8 +4,8 @@ if (( ${#files} ))
 then
     printf "Found files to process\n"
     for file in "/data/av/queue"/* ; do
-        filename=`basename $file`
-        mv -f $file "/data/av/scan/${filename}"
+        filename=`basename "$file"`
+        mv -f "$file" "/data/av/scan/${filename}"
         printf "Processing /data/av/scan/${filename}\n"
         /usr/local/bin/scanfile.sh > /data/av/scan/info 2>&1
         if [ -e "/data/av/scan/${filename}" ]
