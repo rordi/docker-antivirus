@@ -11,7 +11,7 @@ The resulting Docker image runs inotify as the main process that watches a pre-d
 ### Notes
 - **The image may only be built once per hour on the same IP address due to download limitations of the ClamAV signatures**
 - a running container instance consumes around 10 MB memory when idle
-- the image is maintained by Dietrich Rordorf, [Ediqo](https://www.ediqo.com/)
+- the image is maintained by Dietrich Rordorf, [EDIQO Digital Services](https://www.ediqo.ch/)
 - initially the Dockerfile was prepared for [IWF](http://www.iwf.ch/web-solutions/)
 - you can contribute to this project at https://github.com/rordi/docker-antivirus
 
